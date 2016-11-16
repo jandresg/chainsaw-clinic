@@ -20,7 +20,11 @@ label {
     color: #333;
 }
 
-
+.jumbotron {
+	background-image: url(./img/admat.png);
+	background-size: cover;
+	height: 100%;
+}
 
 .btn-send {
     font-weight: 300;
