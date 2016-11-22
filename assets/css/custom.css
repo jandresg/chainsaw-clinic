@@ -32,7 +32,8 @@
 	font: 100% 'Sofachrome Rg';
 }
 .img-responsive {
-	width: auto;
+	width:100%
+ 	max-width:100%;
 }
 
 body, p, div {
