@@ -1,43 +1,41 @@
 <?php
+	if (isset($_POST["submit"])) {
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$message = $_POST['message'];
+		$human = intval($_POST['human']);
+		$from = 'Demo Contact Form';
+		$to = 'example@bootstrapbay.com';
+		$subject = 'Message from Contact Demo ';
 
-// configure
-$from = 'Demo contact form <demo@domain.com>';
-$sendTo = 'Demo contact form <jandrresg@gmail.com>';
-$subject = 'Hello!';
-$fields = array('name' => 'Name', 'surname' => 'Surname', 'phone' => 'Phone', 'email' => 'Email', 'message' => 'Message'); // array variable name => Text to appear in email
-$okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!';
-$errorMessage = 'There was an error while submitting the form. Please try again later';
+		$body = "From: $name\n E-Mail: $email\n Message:\n $message";
 
-// let's do the sending
+		// Check if name has been entered
+		if (!$_POST['name']) {
+			$errName = 'Please enter your name';
+		}
 
-try
-{
-    $emailText = "You have new message from contact form\n=============================\n";
+		// Check if email has been entered and is valid
+		if (!$_POST['email'] || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			$errEmail = 'Please enter a valid email address';
+		}
 
-    foreach ($_POST as $key => $value) {
+		//Check if message has been entered
+		if (!$_POST['message']) {
+			$errMessage = 'Please enter your message';
+		}
+		//Check if simple anti-bot test is correct
+		if ($human !== 5) {
+			$errHuman = 'Your anti-spam is incorrect';
+		}
 
-        if (isset($fields[$key])) {
-            $emailText .= "$fields[$key]: $value\n";
-        }
-    }
-
-    mail($sendTo, $subject, $emailText, "From: " . $from);
-
-    $responseArray = array('type' => 'success', 'message' => $okMessage);
+// If there are no errors, send the email
+if (!$errName && !$errEmail && !$errMessage && !$errHuman) {
+	if (mail ($to, $subject, $body, $from)) {
+		$result='<div class="alert alert-success">Thank You! I will be in touch</div>';
+	} else {
+		$result='<div class="alert alert-danger">Sorry there was an error sending your message. Please try again later</div>';
+	}
 }
-catch (\Exception $e)
-{
-    $responseArray = array('type' => 'danger', 'message' => $errorMessage);
-}
-
-if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $encoded = json_encode($responseArray);
-
-    header('Content-Type: application/json');
-
-    echo $encoded;
-}
-else {
-    echo $responseArray['message'];
-}
+	}
 ?>
