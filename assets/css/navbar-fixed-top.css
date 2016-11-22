@@ -1,8 +1,22 @@
+@font-face {
+	font-family: 'Sofachrome Rg';
+	src: url('../fonts/SofachromeRg-Regular.eot');
+	src: url('../fonts/SofachromeRg-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/SofachromeRg-Regular.woff') format('woff'),
+		url('../fonts/SofachromeRg-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 body {
+	font: 'HqSansProTT';
   min-height: 500px;
   padding-top: 70px;
 }
-
+.navbar-brand{
+  font: 'Sofachrome Rg';
+}
 .jumbotron {
 	height: 100%;
 

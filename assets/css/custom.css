@@ -1,15 +1,42 @@
 @font-face {
 	font-family: 'Hq Sans Pro TT';
-	src: url('HqSansProTT-Bold.eot');
-	src: url('HqSansProTT-Bold.eot?#iefix') format('embedded-opentype'),
-		url('HqSansProTT-Bold.woff') format('woff'),
-		url('HqSansProTT-Bold.ttf') format('truetype');
+	src: url('../fonts/HqSansProTT-Bold.eot');
+	src: url('../fonts/HqSansProTT-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/HqSansProTT-Bold.woff') format('woff'),
+		url('../fonts/HqSansProTT-Bold.ttf') format('truetype');
 	font-weight: bold;
 	font-style: normal;
 }
 
-body {
-    font-family: 'Hq Sans Pro TT';
+@font-face {
+	font-family: 'Sofachrome Rg';
+	src: url('../fonts/SofachromeRg-Regular.eot');
+	src: url('../fonts/SofachromeRg-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/SofachromeRg-Regular.woff') format('woff'),
+		url('../fonts/SofachromeRg-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.navbar-brand {
+	font: 100% 'Sofachrome Rg', HqSansProTT Bold;
+
+}
+
+.add-header {
+	font: 'HqSansProTT';
+	font-size: 50px;
+}
+
+.heading-name {
+	font: 100% 'Sofachrome Rg';
+}
+.img-responsive {
+	width: auto;
+}
+
+body, p, div {
+    font: 'Hq Sans Pro TT';
 }
 
 h1{
@@ -21,6 +48,7 @@ label {
 }
 
 .btn-send {
+	font: 'HqSansProTT Bold';
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.1em;
